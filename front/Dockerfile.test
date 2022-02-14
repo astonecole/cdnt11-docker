@@ -1,0 +1,22 @@
+# Name of image angular-cache-test
+# docker build -f Dockerfile.test --no-cache -t angular-cache-test .
+# docker run --rm -p 9090:80 angular-cache-test
+FROM node:16.14 as builder
+
+# Stage one
+WORKDIR /home/node/app
+COPY package*.json ./
+RUN npm ci --only=production
+RUN npm i -g @angular/cli
+
+COPY . .
+
+RUN npm run build
+
+# Stage two
+FROM nginx
+WORKDIR /usr/share/nginx/html
+RUN rm -Rf ./*
+COPY --from=builder /home/node/app/dist/front .
+
+# CMD [ "nginx", "-g", "daemon off;" ]
