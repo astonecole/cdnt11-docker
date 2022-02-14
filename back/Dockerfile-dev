@@ -1,0 +1,13 @@
+FROM node:16.14-alpine
+
+LABEL maintainer="Vincent Letoureau<vincent@nanoninja.com>"
+
+WORKDIR /home/node/api 
+VOLUME /home/node/api
+
+ENV API_PORT=3000
+ENV API_DB_DSN=mongodb://root:root@mongo:27017/store?authSource=admin
+
+EXPOSE $API_PORT
+
+CMD [ "npm", "start" ]
