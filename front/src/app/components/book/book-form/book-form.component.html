@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-card>
+    <h1>Create a new book</h1>
+
+    <mat-card-title>
+      <form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput placeholder="Ex. Title of book">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Author</mat-label>
+          <input formControlName="author" matInput placeholder="Ex. John Doe">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>ISBN</mat-label>
+          <input formControlName="isbn" matInput placeholder="Ex. 9780134190440">
+        </mat-form-field>
+
+        <div class="buttons">
+          <button mat-raised-button type="submit" mat-button (click)="onCancel()">Cancel</button>
+          <button mat-raised-button type="submit" mat-button color="primary" [disabled]="form.invalid">Save</button>
+        </div>
+      </form>
+    </mat-card-title>
+
+  </mat-card>
+</div>
