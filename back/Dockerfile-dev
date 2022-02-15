@@ -6,7 +6,7 @@ WORKDIR /home/node/api
 VOLUME /home/node/api
 
 ENV API_PORT=3000
-ENV API_DB_DSN=mongodb://root:root@mongo:27017/store?authSource=admin
+ENV API_DB_DSN=mongodb://root:root@db:27017/store?authSource=admin
 
 EXPOSE $API_PORT
 
