@@ -61,3 +61,22 @@ docker run --name myadmin -d \
     --network=cloud_network \
     -p 8000:80 phpmyadmin
 ```
+
+```sh
+docker volume create dbstore
+
+docker run -d --name db \
+    --network=cloud_network \
+    -v dbstore:/data/db \
+    -e MONGO_INITDB_DATABASE=store \
+    -e MONGO_INITDB_ROOT_USERNAME=root \
+    -e MONGO_INITDB_ROOT_PASSWORD=root \
+    mongo:5.0.6
+```
+
+```sh
+docker run -v ${PWD}:/home/node/api \
+    --network=cloud_network \
+    -e API_DB_DSN="mongodb://root:root@db:27017/store?authSource=admin" \
+    -p 3000:3000 api-node
+```
