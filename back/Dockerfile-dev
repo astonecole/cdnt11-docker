@@ -2,7 +2,7 @@ FROM node:16.14-alpine
 
 LABEL maintainer="Vincent Letoureau<vincent@nanoninja.com>"
 
-WORKDIR /home/node/api 
+WORKDIR /home/node/api
 VOLUME /home/node/api
 
 ENV API_PORT=3000

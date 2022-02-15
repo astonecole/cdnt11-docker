@@ -80,3 +80,19 @@ docker run -v ${PWD}:/home/node/api \
     -e API_DB_DSN="mongodb://root:root@db:27017/store?authSource=admin" \
     -p 3000:3000 api-node
 ```
+
+## Running application
+
+```sh
+docker build --no-cache -t api-node-prod .
+
+docker run --name api-prod-server \
+    -p 3000:3000 \
+    -e API_DB_DSN="mongodb://root:root@db:27017/store?authSource=admin" \
+    --network=cloud_network \
+    -d api-node-prod
+
+docker run --name api-prod-font \
+    -p 8080:80 --network=cloud_network \
+    -d api-angular
+```
