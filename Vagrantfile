@@ -14,12 +14,12 @@ Vagrant.configure("2") do |config|
     config.vm.provision :docker_compose
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = "node1"
+        vb.name = "node2"
         vb.memory = "2048"
     end
 
     config.vm.provider "hyperv" do |hv|
-        hv.vmname = "node1"
+        hv.vmname = "node2"
         hv.memory = 2048
         hv.maxmemory = 2048
     end

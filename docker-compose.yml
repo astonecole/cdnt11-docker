@@ -1,7 +1,5 @@
 version: "3.7"
-
 services:
-
   db:
     container_name: db
     image: mongo:5.0.6
@@ -14,7 +12,6 @@ services:
     volumes:
       - dbstore:/data/db
       - ./back/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-
   mongo-admin:
     container_name: mongo-admin
     restart: always
@@ -34,7 +31,6 @@ services:
       - dbstore:/data/db
     networks:
       - api_network
-
   api:
     container_name: api-server
     restart: always
@@ -47,7 +43,6 @@ services:
       - 3000:3000
     networks:
       - api_network
-
   web:
     container_name: web-server
     restart: always
@@ -56,10 +51,8 @@ services:
       - api_network
     ports:
       - 8080:80
-
 networks:
   api_network:
     driver: bridge
-
 volumes:
   dbstore:
